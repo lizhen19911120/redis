@@ -1,0 +1,21 @@
+logging:
+  config: classpath:logback.xml
+  path: d:/redis/logs
+server:
+#  port: 8080
+  session-timeout: 60
+
+spring:
+    redis:
+       database: 1
+       host: 127.0.0.1
+       port: 6379
+       password:
+       timeout: 5000
+       pool:
+           max-active: 8
+           max-wait: -1
+           max-idle: 8
+           min-idle: 0
+    session:
+      store-type: none
