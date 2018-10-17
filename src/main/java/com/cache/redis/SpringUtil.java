@@ -7,6 +7,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.stereotype.Component;
 
 @Component
+@Deprecated
 public final class SpringUtil implements BeanFactoryPostProcessor {
 
     private static ConfigurableListableBeanFactory beanFactory; // Spring应用上下文环境

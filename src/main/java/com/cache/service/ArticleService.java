@@ -14,7 +14,7 @@ public interface ArticleService {
 	 * @param map
 	 * @return
 	 */
-	public List<Article> findArticle(Map<String, Object> map);
+	List<Article> findArticle(Map<String, Object> map);
 
 	/**
 	 * 数据数目
@@ -22,7 +22,7 @@ public interface ArticleService {
 	 * @param map
 	 * @return
 	 */
-	public Long getTotalArticle(Map<String, Object> map);
+//	public Long getTotalArticle(Map<String, Object> map);
 
 	/**
 	 * 添加文章
@@ -55,4 +55,12 @@ public interface ArticleService {
 	 * @return
 	 */
 	public Article findById(String id);
+
+	/**
+	 * 根据id查找
+	 *
+	 * @param id
+	 * @return
+	 */
+	public Article findById2(String id);
 }

@@ -6,3 +6,6 @@ To learn how to use redis
 
 # com.hello包
 使用redis实现简单的消息传播机制（发布/订阅）,不能支持持久化消息，消费者不在线就错过
+
+# com.cache包
+使用spring+redis/内置concurrentMap等实现数据缓存

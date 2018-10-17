@@ -1,6 +1,7 @@
 package com.cache;
 
 import com.cache.common.SqlPropertySourceFactory;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 /**
  * Created by lizhen on 2018/10/11.
@@ -57,6 +59,18 @@ public class Application {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
         return jdbcTemplate;
+    }
+
+//    @Bean
+    private SessionFactory sessionFactory(){
+        return null;
+    }
+
+//    @Bean
+    public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory){
+        HibernateTemplate hibernateTemplate = new HibernateTemplate();
+        hibernateTemplate.setSessionFactory(sessionFactory);
+        return hibernateTemplate;
     }
 
 //    @Bean

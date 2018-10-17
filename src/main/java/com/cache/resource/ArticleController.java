@@ -23,6 +23,7 @@ public class ArticleController {
 
     /**
      * 查找相应的数据集合
+     * 未实现
      *
      * @param page
      * @param rows
@@ -123,6 +124,7 @@ public class ArticleController {
 
     /**
      * 修改
+     * 未实现
      *
      * @param article
      * @return
@@ -181,6 +183,23 @@ public class ArticleController {
         Result result = ResultGenerator.genSuccessResult();
         result.setData(article);
         log.info("request: article/findById");
+        return result;
+    }
+
+    /**
+     * 根据id查找
+     * 使用另一个cache manager
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/findById2/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result findById2(@PathVariable("id") String id) throws Exception {
+        Article article = articleService.findById2(id);
+        Result result = ResultGenerator.genSuccessResult();
+        result.setData(article);
+        log.info("request: article/findById2");
         return result;
     }
 }
