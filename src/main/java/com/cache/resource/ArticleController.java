@@ -171,12 +171,12 @@ public class ArticleController {
 
     /**
      * 根据id查找
-     *
+     * /{id:.+} 使用正则表达式，表示http://localhost:8080/articles/1063访问，这里与{id}并无两样，但是可以通过正则规定id的输入格式
      * @param id
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
     @ResponseBody
     public Result findById(@PathVariable("id") String id) throws Exception {
         Article article = articleService.findById(id);

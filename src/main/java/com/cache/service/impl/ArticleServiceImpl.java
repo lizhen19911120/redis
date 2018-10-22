@@ -28,7 +28,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> findArticle(Map<String, Object> map) {
-
+        return null;
     }
 
 //    @Override
@@ -84,7 +84,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     @Override
-    @Caching(cacheable = @Cacheable(value = "myRedisConfig",keyGenerator = "mykeyGenerator", unless = "#result==null"))
+    @Caching(cacheable = @Cacheable(value = "myRedisConfig",keyGenerator = "mykeyGenerator", cacheResolver = "cacheResolver", unless = "#result==null"))
     public Article findById(String id) {
         Article articleFromMysql = articleDao.getArticleById(id);
         log.info("get article from mysql");
@@ -97,7 +97,7 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     @Override
-    @Caching(cacheable = @Cacheable(value = "myConMapManager",keyGenerator = "mykeyGenerator", cacheResolver = "cacheResolver", unless = "#result==null"))
+    @Caching(cacheable = @Cacheable(value = "myConMapManager",keyGenerator = "mykeyGenerator", cacheResolver = "cacheResolver1", unless = "#result==null"))
     public Article findById2(String id) {
         Article articleFromMysql = articleDao.getArticleById(id);
         log.info("get article from mysql2");

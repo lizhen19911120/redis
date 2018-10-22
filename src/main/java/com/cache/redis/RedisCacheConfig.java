@@ -11,6 +11,7 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.cache.interceptor.SimpleCacheResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -80,7 +81,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
      * @return
      */
     @Bean
-//    @Primary //如果有多个cache manager，则必须指定一个manager作为主要的,但是如果配置CacheResolver，并在@Cacheable等注解上指明了CacheResolver,则可以不加@Primary
+//    @Qualifier("cacheManager")
+    @Primary //如果有多个cache manager，则必须指定一个manager作为主要的.
     public RedisCacheManager cacheManager(RedisConnectionFactory cf,@Qualifier("myRedisCacheConfiguration") RedisCacheConfiguration redisCacheConfiguration) {
         Map<String,RedisCacheConfiguration> configurationMap = new HashMap<>();
         configurationMap.put("myRedisConfig",redisCacheConfiguration);//"myRedisConfig"就是一个cache实例的name
@@ -102,9 +104,12 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
      * @return
      */
     @Bean
-    public CacheResolver cacheResolver() {
+    public CacheResolver cacheResolver( RedisCacheManager cacheManager) {
+        return new SimpleCacheResolver(cacheManager);
+    }
+    @Bean
+    public CacheResolver cacheResolver1() {
         return new SimpleCacheResolver(mapCacheManager());
     }
-
 
 }
