@@ -45,6 +45,9 @@ public class Application {
     private String password;
 
     @Bean
+    /**
+     * 最好用池化管理的DataSource，比如 ComboPooledDataSource
+     */
     public DriverManagerDataSource driverManagerDataSource(){
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName(driverClassName);
