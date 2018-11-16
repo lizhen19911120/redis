@@ -19,3 +19,27 @@ spring:
            min-idle: 0
     session:
       store-type: none
+rbacSecurity:
+    ignore-url:
+#        - /api/register
+#        - /api/activate
+#        - /api/authenticate
+#        - /api/account/reset-password/init
+#        - /api/account/reset-password/finish
+        - /api/profile-info
+#        - /user/**
+#        - /role/**
+#        - /group/**
+#        - /operation/**
+#        - /permission/**
+        - /api/**
+        - /management/health
+        - /management/**
+        - /v2/api-docs/**
+        - /swagger-resources/configuration/ui
+        - /swagger-ui/index.html
+        - /oauth/token_key
+        - /oauth/token
+    app-name: managementuaa
+    base-url: http://managementuaa
+application:

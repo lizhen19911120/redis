@@ -202,4 +202,13 @@ public class ArticleController {
         log.info("request: article/findById2");
         return result;
     }
+
+    @RequestMapping(value = "/findBoolean", method = RequestMethod.GET)
+    @ResponseBody
+    public Result findBoolean(@RequestParam("boolean") Boolean bool) throws Exception {
+        log.info("request: findBoolean");
+        Result result = ResultGenerator.genSuccessResult();
+        result.setData(bool);
+        return result;
+    }
 }
