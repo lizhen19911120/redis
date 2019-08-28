@@ -80,6 +80,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     /**
      * 使用redis缓存管理器，mykeyGenerator作为键生成器，同时只有当方法返回的Article不为空才存入缓存
+     *
+     * 应该只要写了cacheResolver，就不需要指定cacheNames和cacheManager这些属性了吧？——
+     * cacheManager和cacheResolver互斥，只能写一个。若只指定了cacheManager属性，spring会使用指定的cacheManager去创建一个默认的cacheResolver。
+     * cacheNames还是需要指定【或者在@CacheConfig这个注解中指定】，因为cacheManager中可以有多个cache实例，所以还是要告诉spring你要将缓存数据使用哪些cache实例的规范来放到Redis中。
+     * 如果指定多个cache实例，即多次存放？
+     *
      * @param id
      * @return
      */
